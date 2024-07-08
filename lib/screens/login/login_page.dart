@@ -33,20 +33,17 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
-    double width = MediaQuery.of(context).size.width;
-    double height = MediaQuery.of(context).size.height;
-
     return SafeArea(
       child: Scaffold(
         body: Stack(
           children: [
             Transform.translate(
-              offset: Offset(0.0, -height * 0.32),
+              offset: Offset(0.0, -screenHeight * 0.32),
               child: Transform.rotate(
                 angle: pi / 4.3,
                 child: Container(
-                  width: height * 0.7,
-                  height: height * 0.75,
+                  width: screenHeight * 0.7,
+                  height: screenHeight * 0.75,
                   decoration: ShapeDecoration(
                     gradient: const LinearGradient(
                       begin: Alignment(0.48, -0.88),
@@ -64,7 +61,7 @@ class _LoginPageState extends State<LoginPage> {
               ),
             ),
             Transform.translate(
-              offset: Offset(width * 0.4, height * 0.7),
+              offset: Offset(screenWidth * 0.4, screenHeight * 0.7),
               child: Container(
                 width: 428,
                 height: 428,
@@ -87,7 +84,7 @@ class _LoginPageState extends State<LoginPage> {
                 filter: ImageFilter.blur(sigmaX: 6.0, sigmaY: 6.0),
                 child: SingleChildScrollView(
                   child: Container(
-                    width: width - (width * 0.12),
+                    width: screenWidth - (screenWidth * 0.12),
                     // height: height - (height * 0.12),
                     decoration: ShapeDecoration(
                       gradient: LinearGradient(
