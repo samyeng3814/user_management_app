@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:user_management_app/theme/themes.dart';
 import 'package:user_management_app/utils/app_colors.dart';
 
 class CustomTextField extends StatelessWidget {
@@ -8,8 +9,9 @@ class CustomTextField extends StatelessWidget {
   final bool? obsureText;
   final int maxLines;
   final Widget? prefix;
+  final Widget? suffix;
   final String? Function(String?)? validator;
-  final List<TextInputFormatter>? inputFormatter;
+  final List<TextInputFormatter>? inputFormatters;
   final FocusNode? focusNode;
   final bool? isBorderEnabled;
   final bool? autofocus;
@@ -23,8 +25,9 @@ class CustomTextField extends StatelessWidget {
     this.obsureText = false,
     this.maxLines = 1,
     this.prefix,
+    this.suffix,
     this.validator,
-    this.inputFormatter,
+    this.inputFormatters,
     this.focusNode,
     this.isBorderEnabled = false,
     this.autofocus = false,
@@ -37,7 +40,7 @@ class CustomTextField extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         border: null,
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(16),
       ),
       child: TextFormField(
         style: const TextStyle(
@@ -48,38 +51,43 @@ class CustomTextField extends StatelessWidget {
         autofocus: autofocus!,
         focusNode: focusNode,
         controller: controller,
-        cursorColor: AppColors.lightBlueColor,
+        cursorColor: AppColors.textColor,
         onFieldSubmitted: onFieldSubmitted,
-        inputFormatters: inputFormatter,
+        inputFormatters: inputFormatters,
         textAlignVertical: TextAlignVertical.center,
         decoration: InputDecoration(
           prefixIcon: prefix,
-          contentPadding: const EdgeInsets.symmetric(horizontal: 10),
+          suffixIcon: suffix,
+          contentPadding:
+              const EdgeInsets.symmetric(horizontal: 14, vertical: 14),
           disabledBorder: InputBorder.none,
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12),
             borderSide: BorderSide.none,
           ),
-          fillColor: const Color(0xfff3f3f4),
+          fillColor: AppColors.textFieldFillColor,
           filled: true,
           labelText: isLabelEnabled ? hintText : null,
           focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(12),
-            borderSide: BorderSide(
-              color: AppColors.primaryColor,
-              width: 1,
+            borderRadius: BorderRadius.circular(16),
+            borderSide: const BorderSide(
+              color: AppColors.blackColor,
+              width: 1.2,
             ),
           ),
           hintText: hintText,
-          hintStyle: TextStyle(color: Colors.blueGrey.shade200),
+          hintStyle: AppTheme.of(context).bodyText.copyWith(
+                color: AppColors.hintTextColor,
+                fontWeight: FontWeight.w400,
+              ),
           enabledBorder: OutlineInputBorder(
             borderSide: isBorderEnabled!
                 ? BorderSide(
-                    color: AppColors.redButtonColor.withOpacity(0.5),
-                    width: 1,
+                    color: AppColors.textFieldBorderColor,
+                    width: 1.2,
                   )
                 : BorderSide.none,
-            borderRadius: BorderRadius.circular(12),
+            borderRadius: BorderRadius.circular(16),
           ),
         ),
         validator: validator,

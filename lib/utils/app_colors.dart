@@ -2,8 +2,14 @@ import 'package:flutter/material.dart';
 
 class AppColors {
   AppColors._();
+
   static Color whiteColor = Colors.white;
-  static Color blackColor = Colors.black;
+  static const Color blackColor = Colors.black;
+  static Color textFieldBorderColor = const Color(0XFFD1D1D1);
+  static Color textFieldFillColor = const Color(0XFFFDFDFD);
+  static Color textColor = const Color(0XFF2A2A2A);
+  static Color hintTextColor = const Color(0XFF696969);
+  static Color textFieldVisibleIconColor = const Color(0XFFC4C4C4);
   static Color primaryColor = const Color(0XFF1A4CfB);
   static Color secondaryColor = const Color(0XFF749AFD);
   static Color darkBlueBlack = const Color(0XFF263A52);

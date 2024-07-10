@@ -9,13 +9,9 @@ abstract class AppTheme {
     return LightModeTheme();
   }
 
-  TextStyle get title1 => typography.title1;
-  TextStyle get title2 => typography.title2;
-  TextStyle get title3 => typography.title3;
-  TextStyle get subtitle1 => typography.subtitle1;
-  TextStyle get subtitle2 => typography.subtitle2;
-  TextStyle get bodyText1 => typography.bodyText1;
-  TextStyle get bodyText2 => typography.bodyText2;
+  TextStyle get title=> typography.title;
+  TextStyle get subtitle => typography.subtitle;
+  TextStyle get bodyText => typography.bodyText;
 
   Typography get typography => ThemeTypography(this);
 }
@@ -23,13 +19,9 @@ abstract class AppTheme {
 class LightModeTheme extends AppTheme {}
 
 abstract class Typography {
-  TextStyle get title1;
-  TextStyle get title2;
-  TextStyle get title3;
-  TextStyle get subtitle1;
-  TextStyle get subtitle2;
-  TextStyle get bodyText1;
-  TextStyle get bodyText2;
+  TextStyle get title;
+  TextStyle get subtitle;
+  TextStyle get bodyText;
 }
 
 class ThemeTypography extends Typography {
@@ -38,53 +30,27 @@ class ThemeTypography extends Typography {
   final AppTheme theme;
 
   @override
-  TextStyle get title1 => GoogleFonts.getFont(
+  TextStyle get title => GoogleFonts.getFont(
         interFontFamily,
         color: AppColors.blackColor,
         fontWeight: FontWeight.bold,
-        fontSize: 22,
+        fontSize: 28,
       );
+
   @override
-  TextStyle get title2 => GoogleFonts.getFont(
-        interFontFamily,
-        color: AppColors.blackColor,
-        fontWeight: FontWeight.w600,
-        fontSize: 18,
-      );
-  @override
-  TextStyle get title3 => GoogleFonts.getFont(
-        interFontFamily,
-        color: AppColors.blackColor,
-        fontWeight: FontWeight.w600,
-        fontSize: 14,
-      );
-  @override
-  TextStyle get subtitle1 => GoogleFonts.getFont(
+  TextStyle get subtitle => GoogleFonts.getFont(
         interFontFamily,
         color: const Color(0xFFA7A7A7),
-        fontWeight: FontWeight.w500,
-        fontSize: 12,
-      );
-  @override
-  TextStyle get subtitle2 => GoogleFonts.getFont(
-        interFontFamily,
-        color: AppColors.blackColor,
-        fontWeight: FontWeight.w500,
-        fontSize: 12,
-      );
-  @override
-  TextStyle get bodyText1 => GoogleFonts.getFont(
-        interFontFamily,
-        color: AppColors.blackColor,
-        fontWeight: FontWeight.w500,
-        fontSize: 14,
-      );
-  @override
-  TextStyle get bodyText2 => GoogleFonts.getFont(
-        interFontFamily,
-        color: AppColors.blackColor,
         fontWeight: FontWeight.w600,
-        fontSize: 14,
+        fontSize: 24,
+      );
+
+  @override
+  TextStyle get bodyText => GoogleFonts.getFont(
+        interFontFamily,
+        color: AppColors.blackColor,
+        fontWeight: FontWeight.w400,
+        fontSize: 16,
       );
 }
 
@@ -102,7 +68,7 @@ extension TextStyleHelper on TextStyle {
   }) =>
       useGoogleFonts
           ? GoogleFonts.getFont(
-              fontFamily = "Inter",
+              fontFamily = interFontFamily,
               color: color ?? this.color,
               fontSize: fontSize ?? this.fontSize,
               letterSpacing: letterSpacing ?? this.letterSpacing,
