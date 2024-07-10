@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:user_management_app/screens/login/login_page.dart';
-import 'package:user_management_app/screens/register_page/register_page.dart';
-import 'package:user_management_app/screens/splash_screen/splash_screen.dart';
+import 'package:user_management_app/navigation/route_manager.dart';
+import 'package:user_management_app/utils/app_colors.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,22 +14,15 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       title: 'Flutter Demo',
+      theme: ThemeData(
+        useMaterial3: true,
+        colorScheme: ColorScheme.light(
+          onPrimary: AppColors.whiteColor,
+        ),
+      ),
       debugShowCheckedModeBanner: false,
-      getPages: [
-        GetPage(
-          name: '/',
-          page: () => const SplashScreen(),
-        ),
-        GetPage(
-          name: '/login_page',
-          page: () => const LoginPage(),
-        ),
-        GetPage(
-          name: '/register_page',
-          page: () => const RegisterPage(),
-        )
-      ],
-      home: const SplashScreen(),
+      initialRoute: RouteManager.splashScreen,
+      getPages: RouteManager.getPages(),
     );
   }
 }

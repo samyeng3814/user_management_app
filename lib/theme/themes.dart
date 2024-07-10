@@ -34,7 +34,7 @@ class ThemeTypography extends Typography {
         interFontFamily,
         color: AppColors.blackColor,
         fontWeight: FontWeight.bold,
-        fontSize: 28,
+        fontSize: 22,
       );
 
   @override
@@ -42,7 +42,7 @@ class ThemeTypography extends Typography {
         interFontFamily,
         color: const Color(0xFFA7A7A7),
         fontWeight: FontWeight.w600,
-        fontSize: 24,
+        fontSize: 18,
       );
 
   @override

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:user_management_app/constants/constant.dart';
+import 'package:user_management_app/navigation/route_manager.dart';
 import 'package:user_management_app/theme/themes.dart';
 import 'package:user_management_app/utils/app_colors.dart';
 import 'package:user_management_app/utils/app_sized_box.dart';
@@ -37,7 +38,6 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.whiteColor,
       body: SafeArea(
         child: Stack(
           children: [
@@ -147,7 +147,9 @@ class _LoginPageState extends State<LoginPage> {
                                     mainAxisAlignment: MainAxisAlignment.end,
                                     children: [
                                       GestureDetector(
-                                        onTap: () {},
+                                        onTap: () {
+                                          Get.toNamed(RouteManager.forgetPasswordPage);
+                                        },
                                         child: Container(
                                           padding: const EdgeInsets.only(
                                             bottom: 14,
@@ -167,7 +169,9 @@ class _LoginPageState extends State<LoginPage> {
                                   ),
                                   CustomButton(
                                     text: 'Login',
-                                    onPressed: () {},
+                                    onPressed: () {
+                                      Get.toNamed(RouteManager.dashboardPage);
+                                    },
                                   ),
                                   Padding(
                                     padding: const EdgeInsets.only(top: 24.0),
@@ -180,7 +184,7 @@ class _LoginPageState extends State<LoginPage> {
                                                 AppTheme.of(context).bodyText),
                                         GestureDetector(
                                           onTap: () {
-                                            Get.toNamed('/register_page');
+                                            Get.toNamed(RouteManager.signUpPage);
                                           },
                                           child: Text(
                                             ' Sign Up',
