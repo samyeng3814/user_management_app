@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:user_management_app/dashboard/dashboard_page.dart';
+import 'package:user_management_app/features/dashboard/dashboard_page.dart';
 import 'package:user_management_app/forget_password/forget_password_page.dart';
 import 'package:user_management_app/features/login/login_page.dart';
 import 'package:user_management_app/features/register_feature/register_page.dart';

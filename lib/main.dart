@@ -15,10 +15,8 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        useMaterial3: true,
-        colorScheme: ColorScheme.light(
-          onPrimary: AppColors.whiteColor,
-        ),
+        useMaterial3: false,
+        scaffoldBackgroundColor: AppColors.whiteColor,
       ),
       debugShowCheckedModeBanner: false,
       initialRoute: RouteManager.splashScreen,

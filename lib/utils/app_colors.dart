@@ -5,6 +5,8 @@ class AppColors {
 
   static Color whiteColor = Colors.white;
   static const Color blackColor = Colors.black;
+  static Color redColor = Colors.red;
+  static Color greenColor = Colors.green;
   static Color textFieldBorderColor = const Color(0XFFD1D1D1);
   static Color textFieldFillColor = const Color(0XFFFDFDFD);
   static Color textColor = const Color(0XFF2A2A2A);
