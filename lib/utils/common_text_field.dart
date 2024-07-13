@@ -7,6 +7,7 @@ class CustomTextField extends StatelessWidget {
   final TextEditingController controller;
   final String? hintText;
   final bool? obsureText;
+  final Function? onTapOutside;
   final int maxLines;
   final Widget? prefix;
   final Widget? suffix;
@@ -22,6 +23,7 @@ class CustomTextField extends StatelessWidget {
     super.key,
     required this.controller,
     this.hintText,
+    this.onTapOutside,
     this.obsureText = false,
     this.maxLines = 1,
     this.prefix,
@@ -43,6 +45,9 @@ class CustomTextField extends StatelessWidget {
         borderRadius: BorderRadius.circular(16),
       ),
       child: TextFormField(
+        onTapOutside: (event) {
+          onTapOutside!();
+        },
         style: const TextStyle(
           fontSize: 14,
         ),
@@ -77,7 +82,7 @@ class CustomTextField extends StatelessWidget {
           ),
           hintText: hintText,
           hintStyle: AppTheme.of(context).bodyText.copyWith(
-                color: AppColors.hintTextColor,
+                color: AppColors.hintTextColor.withOpacity(0.8),
                 fontWeight: FontWeight.w400,
               ),
           enabledBorder: OutlineInputBorder(

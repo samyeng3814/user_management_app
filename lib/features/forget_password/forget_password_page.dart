@@ -3,12 +3,12 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:user_management_app/constants/constant.dart';
 import 'package:user_management_app/theme/themes.dart';
+import 'package:user_management_app/utils/app_colors.dart';
 import 'package:user_management_app/utils/app_sized_box.dart';
 import 'package:user_management_app/utils/common_text_field.dart';
 import 'package:user_management_app/utils/elevated_button.dart';
+import 'package:user_management_app/utils/validation.dart';
 
-import '../utils/app_colors.dart';
-import '../utils/validation.dart';
 
 class ForgetPasswordPage extends StatefulWidget {
   const ForgetPasswordPage({super.key});
@@ -26,6 +26,7 @@ class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: AppColors.whiteColor,
+        elevation: 0.2,
         centerTitle: true,
         automaticallyImplyLeading: false,
         title: Text(

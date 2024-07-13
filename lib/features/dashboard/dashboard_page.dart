@@ -7,6 +7,7 @@ import 'package:user_management_app/features/dashboard/widgets/overview_card_wid
 import 'package:user_management_app/theme/themes.dart';
 import 'package:user_management_app/utils/app_colors.dart';
 import 'package:user_management_app/utils/app_sized_box.dart';
+import 'package:user_management_app/utils/end_drawer_widget.dart';
 
 class DashboardPage extends StatefulWidget {
   const DashboardPage({super.key});
@@ -31,10 +32,12 @@ class _DashboardPageState extends State<DashboardPage> {
     56,
     90
   ];
+  GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: scaffoldKey,
       appBar: AppBar(
         elevation: 0.2,
         backgroundColor: AppColors.whiteColor,
@@ -54,17 +57,25 @@ class _DashboardPageState extends State<DashboardPage> {
         actions: [
           Padding(
             padding: const EdgeInsets.only(right: 16.0),
-            child: SizedBox(
-              height: 40,
-              width: 32,
-              child: SvgPicture.asset(
-                'assets/svg/menu_icon.svg',
-                fit: BoxFit.fill,
+            child: IconButton(
+              splashRadius: 18,
+              constraints: const BoxConstraints(),
+              onPressed: () {
+                scaffoldKey.currentState!.openEndDrawer();
+              },
+              icon: SizedBox(
+                width: 40,
+                height: 40,
+                child: SvgPicture.asset(
+                  'assets/svg/menu_icon.svg',
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
           ),
         ],
       ),
+      endDrawer: const EndDrawerWidget(),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(
@@ -82,17 +93,17 @@ class _DashboardPageState extends State<DashboardPage> {
                   percentageValue: '2.3%',
                   msgString: ' is less than last month',
                   iconPath: 'total_customer_icon',
-                  arrowIcon: Icons.arrow_upward_rounded,
+                  arrowIcon: Icons.arrow_downward_rounded,
                   valueColor: AppColors.redColor,
                 ),
                 OverViewCardWidget(
                   title: 'Total Sales',
-                  value: 'Rs. 34588',
+                  value: '₹ 34588',
                   percentageValue: '4.5%',
                   msgString: ' is greater than last month',
                   iconPath: 'total_sales_icon',
                   valueColor: AppColors.greenColor,
-                  arrowIcon: Icons.arrow_downward_rounded,
+                  arrowIcon: Icons.arrow_upward_rounded,
                 ),
                 AppSizedBox.h12,
                 Text(
@@ -154,8 +165,8 @@ class _DashboardPageState extends State<DashboardPage> {
       color: color,
       backDrawRodData: BackgroundBarChartRodData(
         show: false,
-        toY: 97,
-        color: const Color(0xFFFCFCFC),
+        toY: 97 + 22,
+        color: AppColors.textFieldBorderColor.withOpacity(0.1),
       ),
     );
   }
