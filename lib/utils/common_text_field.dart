@@ -45,9 +45,6 @@ class CustomTextField extends StatelessWidget {
         borderRadius: BorderRadius.circular(16),
       ),
       child: TextFormField(
-        onTapOutside: (event) {
-          onTapOutside!();
-        },
         style: const TextStyle(
           fontSize: 14,
         ),

@@ -4,7 +4,7 @@ import 'package:user_management_app/features/customer_feature/customer_detail_pa
 import 'package:user_management_app/features/customer_feature/customer_list_page.dart';
 import 'package:user_management_app/features/dashboard/dashboard_page.dart';
 import 'package:user_management_app/features/forget_password/forget_password_page.dart';
-import 'package:user_management_app/features/login/login_page.dart';
+import 'package:user_management_app/features/login/view/login_page.dart';
 import 'package:user_management_app/features/register_feature/register_page.dart';
 import 'package:user_management_app/features/splash_screen/splash_screen.dart';
 

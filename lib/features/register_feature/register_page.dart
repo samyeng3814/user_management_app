@@ -145,9 +145,8 @@ class _RegisterPageState extends State<RegisterPage> {
                               controller: emailController,
                               hintText: "abc@gmail.com",
                               isBorderEnabled: true,
-                              inputFormatters:
-                                  TextFieldValidator.emailValidator,
-                              // validator: (value) {},
+                              validator: (value) =>
+                                  TextFieldValidator.validateEmail(value!),
                               focusNode: emailIdFocusNode,
                               onFieldSubmitted: (val) {
                                 FocusScope.of(context)
@@ -219,8 +218,6 @@ class _RegisterPageState extends State<RegisterPage> {
                               controller: passwordController,
                               hintText: "********",
                               isBorderEnabled: true,
-                              inputFormatters:
-                                  TextFieldValidator.passwordRegExp,
                               focusNode: passwordFocusNode,
                               suffix: GestureDetector(
                                 onTap: () {
@@ -258,8 +255,6 @@ class _RegisterPageState extends State<RegisterPage> {
                               controller: confirmPasswordController,
                               hintText: "********",
                               isBorderEnabled: true,
-                              inputFormatters:
-                                  TextFieldValidator.passwordRegExp,
                               focusNode: confirmPasswordFocusNode,
                               suffix: GestureDetector(
                                 onTap: () {

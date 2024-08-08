@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 import 'package:user_management_app/theme/themes.dart';
 import 'package:user_management_app/utils/app_colors.dart';
 import 'package:user_management_app/utils/app_sized_box.dart';
-import 'package:user_management_app/utils/common_text_field.dart';
 import 'package:user_management_app/utils/elevated_button.dart';
 
 class CustomerDetailPage extends StatefulWidget {

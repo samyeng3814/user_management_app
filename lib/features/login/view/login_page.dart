@@ -1,9 +1,10 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:user_management_app/constants/constant.dart';
+import 'package:user_management_app/features/login/controller/login_controller.dart';
+import 'package:user_management_app/features/login/model/login_model.dart';
 import 'package:user_management_app/navigation/route_manager.dart';
 import 'package:user_management_app/theme/themes.dart';
 import 'package:user_management_app/utils/app_colors.dart';
@@ -29,12 +30,6 @@ class _LoginPageState extends State<LoginPage> {
   bool passwordVisibility = true;
 
   final GlobalKey<FormState> _formKey = GlobalKey();
-
-  @override
-  void initState() {
-    super.initState();
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,7 +42,6 @@ class _LoginPageState extends State<LoginPage> {
                 child: SingleChildScrollView(
                   child: Container(
                     width: screenWidth - (screenWidth * 0.12),
-                    // height: height - (height * 0.12),
                     decoration: ShapeDecoration(
                       gradient: LinearGradient(
                         begin: const Alignment(0.8, -0.37),
@@ -98,8 +92,9 @@ class _LoginPageState extends State<LoginPage> {
                                           controller: emailController,
                                           hintText: "abc@gmail.com",
                                           isBorderEnabled: true,
-                                          inputFormatters:TextFieldValidator.emailValidator,
-                                          // validator: (value) {},
+                                          validator: (value) =>
+                                              TextFieldValidator.validateEmail(
+                                                  value!),
                                           focusNode: mailIdFocusNode,
                                         ),
                                       ],
@@ -122,7 +117,6 @@ class _LoginPageState extends State<LoginPage> {
                                           controller: passwordController,
                                           hintText: "********",
                                           isBorderEnabled: true,
-                                          inputFormatters: TextFieldValidator.passwordRegExp,
                                           focusNode: passwordFocusNode,
                                           suffix: GestureDetector(
                                             onTap: () {
@@ -148,7 +142,8 @@ class _LoginPageState extends State<LoginPage> {
                                     children: [
                                       GestureDetector(
                                         onTap: () {
-                                          Get.toNamed(RouteManager.forgetPasswordPage);
+                                          Get.toNamed(
+                                              RouteManager.forgetPasswordPage);
                                         },
                                         child: Container(
                                           padding: const EdgeInsets.only(
@@ -170,7 +165,28 @@ class _LoginPageState extends State<LoginPage> {
                                   CustomButton(
                                     text: 'Login',
                                     onPressed: () {
-                                      Get.toNamed(RouteManager.dashboardPage);
+                                      final LoginController loginController =
+                                          Get.find<LoginController>();
+                                      loginController
+                                          .login(LoginReqModel(
+                                              email:
+                                                  emailController.text.trim(),
+                                              password:
+                                                  passwordController.text))
+                                          .then(
+                                        (_) {
+                                          Get.showSnackbar(
+                                            GetSnackBar(
+                                              message: loginController
+                                                  .errorMessage.value,
+                                              duration:
+                                                  const Duration(seconds: 2),
+                                            ),
+                                          );
+                                          Get.toNamed(
+                                              RouteManager.dashboardPage);
+                                        },
+                                      );
                                     },
                                   ),
                                   Padding(
@@ -184,7 +200,8 @@ class _LoginPageState extends State<LoginPage> {
                                                 AppTheme.of(context).bodyText),
                                         GestureDetector(
                                           onTap: () {
-                                            Get.toNamed(RouteManager.signUpPage);
+                                            Get.toNamed(
+                                                RouteManager.signUpPage);
                                           },
                                           child: Text(
                                             ' Sign Up',

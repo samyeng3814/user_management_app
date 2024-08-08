@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:user_management_app/constants/constant.dart';
 import 'package:user_management_app/navigation/route_manager.dart';
 import 'package:user_management_app/theme/themes.dart';
 

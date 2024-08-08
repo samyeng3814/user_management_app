@@ -41,7 +41,7 @@ class _AddCustomerPageState extends State<AddCustomerPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar:  AppBar(
+      appBar: AppBar(
         backgroundColor: AppColors.whiteColor,
         centerTitle: true,
         elevation: 0.2,
@@ -140,9 +140,8 @@ class _AddCustomerPageState extends State<AddCustomerPage> {
                               controller: emailController,
                               hintText: "abc@gmail.com",
                               isBorderEnabled: true,
-                              inputFormatters:
-                                  TextFieldValidator.emailValidator,
-                              // validator: (value) {},
+                              validator: (value) =>
+                                  TextFieldValidator.validateEmail(value!),
                               focusNode: emailIdFocusNode,
                               onFieldSubmitted: (val) {
                                 FocusScope.of(context)
@@ -204,7 +203,6 @@ class _AddCustomerPageState extends State<AddCustomerPage> {
                           Expanded(
                             child: SizedBox(
                               height: 96,
-
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
@@ -306,8 +304,8 @@ class _AddCustomerPageState extends State<AddCustomerPage> {
                                     isBorderEnabled: true,
                                     focusNode: paidAmountFocusNode,
                                     onFieldSubmitted: (val) {
-                                      FocusScope.of(context).requestFocus(
-                                          pendingAmountFocusNode);
+                                      FocusScope.of(context)
+                                          .requestFocus(pendingAmountFocusNode);
                                     },
                                   ),
                                 ],

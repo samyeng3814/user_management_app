@@ -1,19 +1,31 @@
 import 'package:flutter/services.dart';
 
 class TextFieldValidator {
-  static List<TextInputFormatter> emailValidator = [
-    // FilteringTextInputFormatter.deny(' '),
-    // FilteringTextInputFormatter.allow(
-    //   RegExp(
-    //       r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+"),
-    // ),
-  ];
+  static validateEmail(String value) {
+    String emailRegExp =
+        r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+";
+    RegExp regExp = RegExp(emailRegExp);
+    if (value.isEmpty) {
+      return 'Please Enter Email';
+    } else if (!regExp.hasMatch(value)) {
+      return "Enter valid email";
+    } else {
+      return null;
+    }
+  }
 
-  static List<TextInputFormatter> passwordRegExp = [
-    // FilteringTextInputFormatter.allow(
-    //   RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$'),
-    // ),
-  ];
+  static validateMobileNumber(String value) {
+    String mobileRegExp = r'^[4-9][0-9]{9}';
+    RegExp regExp = RegExp(mobileRegExp);
+    if (value.isEmpty) {
+      return "Please Enter Mobile";
+    } else if (!regExp.hasMatch(value)) {
+      return "Enter valid mobile number";
+    } else {
+      return null;
+    }
+  }
+
   static List<TextInputFormatter> mobileNumberValidator = [
     LengthLimitingTextInputFormatter(10),
     FilteringTextInputFormatter.deny(' '),
